@@ -30,11 +30,11 @@ body::before{
 }
 
 header{
-  padding:18px 8%;
+  padding:16px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(2,8,18,0.72);
+  background:rgba(2,8,18,0.78);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(0,234,255,0.18);
   position:sticky;
@@ -45,7 +45,7 @@ header{
 .logo-area{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   text-decoration:none;
   color:#4dfcff;
   font-size:22px;
@@ -53,10 +53,11 @@ header{
 }
 
 .logo-area img{
-  width:42px;
-  height:42px;
-  border-radius:12px;
+  width:58px;
+  height:58px;
+  border-radius:16px;
   object-fit:cover;
+  box-shadow:0 0 22px rgba(0,234,255,0.35);
 }
 
 nav{
@@ -67,8 +68,9 @@ nav{
 nav a{
   color:#dff8ff;
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
   font-size:15px;
+  transition:0.25s;
 }
 
 nav a:hover{
@@ -120,6 +122,31 @@ nav a:hover{
   background:rgba(0,234,255,0.08);
 }
 
+.logged-box{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:9px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(0,234,255,0.18);
+  color:#b8d7e6;
+  font-size:12px;
+  max-width:240px;
+}
+
+.logged-box strong{
+  color:#4dfcff;
+  font-size:13px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.auth-buttons button{
+  font-size:15px;
+}
+
 .hero{
   min-height:82vh;
   padding:110px 8% 90px;
@@ -151,7 +178,7 @@ nav a:hover{
 .hero p{
   color:#b8d7e6;
   font-size:21px;
-  max-width:680px;
+  max-width:700px;
   margin:24px 0;
   line-height:1.5;
 }
@@ -173,7 +200,8 @@ nav a:hover{
 .card,
 .contato,
 .auth-box,
-.dashboard{
+.dashboard,
+.comparativo{
   background:linear-gradient(180deg,rgba(8,31,57,0.82),rgba(3,13,29,0.86));
   border:1px solid rgba(0,234,255,0.22);
   border-radius:24px;
@@ -182,20 +210,37 @@ nav a:hover{
   backdrop-filter:blur(10px);
 }
 
+.vantagens div{
+  transition:0.25s;
+}
+
+.vantagens div:hover{
+  transform:translateY(-5px);
+  border-color:rgba(77,252,255,0.55);
+}
+
+.vantagens h3{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
 .vantagens p,
 .card p,
-.contato p{
+.contato p,
+.lista p{
   color:#b8d7e6;
   line-height:1.5;
 }
 
 .planos,
-.contato{
+.contato,
+.comparativo{
   margin:55px 8%;
 }
 
 .planos h2,
-.contato h2{
+.contato h2,
+.comparativo h2{
   text-align:center;
   font-size:42px;
   margin-bottom:12px;
@@ -227,6 +272,19 @@ nav a:hover{
   overflow:hidden;
 }
 
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(0,234,255,0.12),transparent 45%,rgba(123,255,66,0.08));
+  opacity:0;
+  transition:0.3s;
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
 .card:hover{
   transform:translateY(-10px);
   border-color:#4dfcff;
@@ -253,6 +311,22 @@ nav a:hover{
 
 .card button{
   width:100%;
+  position:relative;
+  z-index:1;
+}
+
+.lista{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:25px;
+}
+
+.lista p{
+  background:rgba(255,255,255,0.04);
+  padding:15px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
 .contato{
@@ -345,7 +419,7 @@ footer{
 
 .dashboard{
   margin:60px 8%;
-  max-width:520px;
+  max-width:560px;
 }
 
 .dashboard h1{
@@ -358,10 +432,21 @@ footer{
   margin-bottom:25px;
 }
 
-@media(max-width:850px){
+.painel-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.painel-actions a{
+  display:inline-block;
+}
+
+@media(max-width:950px){
   header{
     flex-direction:column;
-    gap:15px;
+    gap:16px;
   }
 
   nav{
@@ -370,7 +455,27 @@ footer{
   }
 
   .auth-buttons{
-    flex-direction:column;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+}
+
+@media(max-width:750px){
+  .logo-area{
+    font-size:19px;
+  }
+
+  .logo-area img{
+    width:48px;
+    height:48px;
+  }
+
+  .hero{
+    padding-top:80px;
+  }
+
+  .hero h1{
+    letter-spacing:-1px;
   }
 
   .hero-buttons{
@@ -383,56 +488,9 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .hero h1{
-    letter-spacing:-1px;
+  .btn,
+  .btn-outline,
+  .login-btn{
+    text-align:center;
   }
-}.logo-icon{
-  width:42px;
-  height:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:12px;
-  background:linear-gradient(135deg,#007bff,#00eaff);
-  box-shadow:0 0 20px rgba(0,234,255,0.35);
-}
-
-.comparativo{
-  margin:55px 8%;
-  background:linear-gradient(180deg,rgba(8,31,57,0.82),rgba(3,13,29,0.86));
-  border:1px solid rgba(0,234,255,0.22);
-  border-radius:24px;
-  padding:30px;
-  box-shadow:0 0 35px rgba(0,234,255,0.07);
-}
-
-.comparativo h2{
-  text-align:center;
-  font-size:42px;
-  margin-bottom:25px;
-}
-
-.lista{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-}
-
-.lista p{
-  background:rgba(255,255,255,0.04);
-  padding:15px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.08);
-  color:#b8d7e6;
-}
-
-.painel-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:25px;
-}
-
-.painel-actions a{
-  display:inline-block;
 }
