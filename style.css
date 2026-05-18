@@ -667,4 +667,62 @@ footer{
   .produto-info{
     min-height:auto;
   }
+}.terms-link {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.terms-link a {
+  color: #7fdfff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.terms-link a:hover {
+  color: #00d9ff;
+}
+
+.simple-header {
+  padding: 30px;
+}
+
+.back-btn {
+  color: #00d9ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.terms-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.terms-container h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.terms-subtitle {
+  color: #9db4c7;
+  margin-bottom: 40px;
+}
+
+.terms-box {
+  background: rgba(10, 18, 35, 0.95);
+  border: 1px solid rgba(0, 217, 255, 0.15);
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.terms-box h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #00d9ff;
+}
+
+.terms-box p {
+  color: #c8d7e1;
+  line-height: 1.8;
 }
