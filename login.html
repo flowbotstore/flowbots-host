@@ -3,29 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrar | FlowBots Digital</title>
+  <title>Entrar • FlowBots Digital</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 <body>
 
 <section class="auth-page">
-  <form class="auth-box" id="loginForm">
+  <div class="auth-box">
     <a href="index.html" class="auth-logo">⚡ FlowBots Digital</a>
 
     <h1>Entrar</h1>
     <p>Acesse sua conta para ver os serviços e continuar.</p>
 
-    <input type="email" id="loginEmail" placeholder="Seu email" required>
-    <input type="password" id="loginPassword" placeholder="Sua senha" required>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Seu email" required>
+      <input type="password" id="loginPassword" placeholder="Sua senha" required>
 
-    <button type="submit" class="btn">Entrar</button>
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+
+    <button type="button" class="btn-outline" id="forgotPasswordBtn" style="margin-top:12px;">
+      Esqueci minha senha
+    </button>
 
     <p class="auth-link">
       Não tem conta? <a href="cadastro.html">Criar conta</a>
     </p>
 
     <small id="loginMsg"></small>
-  </form>
+  </div>
 </section>
 
 <script type="module" src="firebase.js"></script>
