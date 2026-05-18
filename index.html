@@ -1,314 +1,147 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlowBots Digital</title>
-
-  <link rel="stylesheet" href="style.css"/>
-
-  <script type="module">
-    import { auth } from "./firebase.js";
-    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    window.addEventListener("DOMContentLoaded", () => {
-
-      const authButtons = document.getElementById("authButtons");
-      const userBox = document.getElementById("userBox");
-
-      onAuthStateChanged(auth, (user) => {
-
-        if(user){
-
-          authButtons.innerHTML = `
-            <div class="logged-box">
-              <span>${user.email}</span>
-              <a href="painel.html" class="btn-login">Painel</a>
-            </div>
-          `;
-
-        } else {
-
-          authButtons.innerHTML = `
-            <a href="login.html" class="btn-login">Entrar</a>
-            <a href="cadastro.html" class="btn-register">Registrar</a>
-          `;
-        }
-
-      });
-
-      const protectedCards = document.querySelectorAll("[data-protected='true']");
-
-      protectedCards.forEach(card => {
-
-        card.addEventListener("click", (e) => {
-
-          const user = auth.currentUser;
-
-          if(!user){
-
-            e.preventDefault();
-
-            alert("Você precisa criar uma conta ou entrar para acessar este serviço.");
-
-            window.location.href = "login.html";
-          }
-
-        });
-
-      });
-
-    });
-  </script>
-
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 <body>
 
-  <header>
+<header>
+  <a href="index.html" class="logo-area">
+    <img src="assets/logo.png" alt="FlowBots Digital">
+  </a>
 
-    <div class="logo-area">
+  <nav>
+    <a href="#planos">Serviços</a>
+    <a href="#vantagens">Vantagens</a>
+    <a href="#contato">Contato</a>
+  </nav>
 
-      <img src="assets/logo.png" alt="FlowBots Digital">
+  <div class="auth-buttons" id="authArea">
+    <a class="login-btn" href="login.html">Entrar</a>
+    <a class="btn" href="cadastro.html">Registrar</a>
+  </div>
+</header>
 
-      <div>
-        <h1>FlowBots Digital</h1>
-        <p>Transformando ideias em realidade</p>
-      </div>
+<section class="hero">
+  <div class="hero-content">
+    <span class="badge">FLOWBOTS DIGITAL</span>
 
-    </div>
+    <h1>Automações, bots, sites, hospedagens e servidores profissionais.</h1>
 
-    <nav>
-      <a href="#planos">Serviços</a>
-      <a href="#vantagens">Vantagens</a>
-      <a href="#contato">Contato</a>
-    </nav>
-
-    <div class="auth-buttons" id="authButtons"></div>
-
-  </header>
-
-  <section class="hero">
-
-    <div class="hero-text">
-
-      <span class="tag">FLOWBOTS DIGITAL</span>
-
-      <h2>
-        Soluções modernas para automações,
-        bots, sites e servidores.
-      </h2>
-
-      <p>
-        Criamos projetos profissionais para negócios,
-        comunidades e criadores que querem crescer de verdade.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#planos" class="btn-primary">Ver Serviços</a>
-
-        <a
-          href="https://wa.me/5561999816528"
-          target="_blank"
-          class="btn-secondary"
-        >
-          WhatsApp
-        </a>
-      </div>
-
-    </div>
-
-    <div class="hero-image">
-
-      <img src="assets/logo.png" alt="FlowBots Digital">
-
-    </div>
-
-  </section>
-
-  <section id="planos" class="planos">
-
-    <h2>Nossas Soluções</h2>
-
-    <p class="section-desc">
-      Entre ou crie uma conta para ver mais informações.
+    <p>
+      Transformando ideias em realidade com soluções modernas para empresas,
+      comunidades, criadores e negócios digitais.
     </p>
 
-    <div class="grid">
-
-      <a href="automacao-whatsapp.html" class="card service-card" data-protected="true">
-
-        <img class="service-img" src="assets/automacao-whatsapp.png">
-
-        <h3>Automações para WhatsApp</h3>
-
-        <p>
-          Atendimento automático, respostas rápidas,
-          agendamentos e organização de clientes.
-        </p>
-
-        <strong>A partir de R$100 + R$49/mês</strong>
-
-        <button>Ver detalhes</button>
-
-      </a>
-
-      <a href="bots.html" class="card service-card" data-protected="true">
-
-        <img class="service-img" src="assets/bots-discord.png">
-
-        <h3>Bots para Discord</h3>
-
-        <p>
-          Bots personalizados com comandos,
-          moderação, economia e sistemas completos.
-        </p>
-
-        <strong>A partir de R$10</strong>
-
-        <button>Ver detalhes</button>
-
-      </a>
-
-      <a href="sites.html" class="card service-card" data-protected="true">
-
-        <img class="service-img" src="assets/sites.png">
-
-        <h3>Sites e Landing Pages</h3>
-
-        <p>
-          Landing pages modernas e profissionais
-          para empresas, lojas e projetos.
-        </p>
-
-        <strong>A partir de R$50</strong>
-
-        <button>Ver detalhes</button>
-
-      </a>
-
-      <a href="hospedagem.html" class="card service-card" data-protected="true">
-
-        <img class="service-img" src="assets/hospedagem.png">
-
-        <h3>Hospedagem</h3>
-
-        <p>
-          Hospedagem rápida e segura para sites,
-          bots, sistemas e aplicações.
-        </p>
-
-        <strong>A partir de R$25/mês</strong>
-
-        <button>Ver detalhes</button>
-
-      </a>
-
-      <a href="minecraft.html" class="card service-card" data-protected="true">
-
-        <img class="service-img" src="assets/minecraft.png">
-
-        <h3>Servidores Minecraft</h3>
-
-        <p>
-          Servidores Minecraft personalizados
-          para comunidades e criadores.
-        </p>
-
-        <strong>A partir de R$80</strong>
-
-        <button>Ver detalhes</button>
-
-      </a>
-
+    <div class="hero-buttons">
+      <a href="#planos" class="btn">Ver serviços</a>
+      <a href="https://wa.me/5561999816528" target="_blank" class="btn-outline">Chamar no WhatsApp</a>
     </div>
+  </div>
+</section>
 
-  </section>
+<section id="planos" class="planos">
+  <h2>Nossas Soluções</h2>
+  <p class="section-desc">Entre ou crie uma conta para acessar os serviços.</p>
 
-  <section id="vantagens" class="vantagens">
+  <div class="grid">
 
-    <h2>Por que escolher a FlowBots?</h2>
+    <a href="automacao-whatsapp.html" class="card service-card" data-protected="true">
+      <img class="service-img" src="assets/automacao-whatsapp.png" alt="Automações para WhatsApp">
+      <h3>Automações para WhatsApp</h3>
+      <p>Atendimento automático, respostas rápidas, agendamentos e organização de clientes.</p>
+      <strong>A partir de R$100 + R$49/mês</strong>
+      <button type="button">Ver detalhes</button>
+    </a>
 
-    <div class="vantagens-grid">
+    <a href="bots.html" class="card service-card" data-protected="true">
+      <img class="service-img" src="assets/bots-discord.png" alt="Bots para Discord">
+      <h3>Bots para Discord</h3>
+      <p>Bots personalizados com moderação, economia, comandos, logs e sistemas.</p>
+      <strong>A partir de R$10</strong>
+      <button type="button">Ver detalhes</button>
+    </a>
 
-      <div class="vantagem-box">
-        ⚡ Alta Performance
-      </div>
+    <a href="sites.html" class="card service-card" data-protected="true">
+      <img class="service-img" src="assets/sites.png" alt="Sites e Landing Pages">
+      <h3>Sites e Landing Pages</h3>
+      <p>Landing pages modernas e páginas profissionais para divulgar seu projeto.</p>
+      <strong>A partir de R$50</strong>
+      <button type="button">Ver detalhes</button>
+    </a>
 
-      <div class="vantagem-box">
-        🔒 Segurança
-      </div>
+    <a href="hospedagem.html" class="card service-card" data-protected="true">
+      <img class="service-img" src="assets/hospedagem.png" alt="Hospedagem">
+      <h3>Hospedagem</h3>
+      <p>Hospedagem para sites, bots, sistemas e projetos online com estabilidade.</p>
+      <strong>A partir de R$25/mês</strong>
+      <button type="button">Ver detalhes</button>
+    </a>
 
-      <div class="vantagem-box">
-        🎨 Design moderno
-      </div>
+    <a href="minecraft.html" class="card service-card" data-protected="true">
+      <img class="service-img" src="assets/minecraft.png" alt="Servidores Minecraft">
+      <h3>Servidores Minecraft</h3>
+      <p>Servidores Minecraft personalizados para comunidades, amigos e criadores.</p>
+      <strong>A partir de R$80</strong>
+      <button type="button">Ver detalhes</button>
+    </a>
 
-      <div class="vantagem-box">
-        🤖 Automação inteligente
-      </div>
+  </div>
+</section>
 
-      <div class="vantagem-box">
-        ☁️ Hospedagem confiável
-      </div>
+<section id="vantagens" class="vantagens">
+  <h2>Por que escolher a FlowBots?</h2>
 
-      <div class="vantagem-box">
-        🛠️ Suporte rápido
-      </div>
+  <div class="vantagens-grid">
+    <div class="vantagem-box">⚡ Alta Performance</div>
+    <div class="vantagem-box">🔒 Segurança</div>
+    <div class="vantagem-box">🤖 Automação Inteligente</div>
+    <div class="vantagem-box">☁️ Hospedagem confiável</div>
+    <div class="vantagem-box">🎨 Design moderno</div>
+    <div class="vantagem-box">🛠️ Suporte rápido</div>
+  </div>
+</section>
 
-    </div>
+<section class="comparativo">
+  <h2>Como funciona?</h2>
 
-  </section>
+  <div class="lista">
+    <p>✅ Escolha seu serviço</p>
+    <p>✅ Crie sua conta</p>
+    <p>✅ Veja os detalhes</p>
+    <p>✅ Faça o pagamento automático</p>
+    <p>✅ Suporte e auxílio pelos nossos canais de contato</p>
+  </div>
+</section>
 
-  <section class="comparativo">
+<section id="contato" class="contato">
+  <h2>Contato</h2>
+  <p>Fale com nossa equipe pelo WhatsApp ou entre na nossa comunidade.</p>
 
-    <h2>Como funciona?</h2>
+  <div class="contact-box">
+    <a href="https://wa.me/5561999816528" target="_blank" class="btn">WhatsApp</a>
+    <a href="https://discord.gg/GfwFfhfUGH" target="_blank" class="btn-outline">Discord</a>
+  </div>
+</section>
 
-    <div class="lista">
+<footer>
+  <p>© 2026 FlowBots Digital • Transformando ideias em realidade</p>
+</footer>
 
-      <p>✅ Escolha seu serviço</p>
-
-      <p>✅ Crie sua conta</p>
-
-      <p>✅ Veja os detalhes</p>
-
-      <p>✅ Faça o pagamento automático</p>
-
-      <p>✅ Suporte e auxílio pelos nossos canais de contato</p>
-
-    </div>
-
-  </section>
-
-  <section id="contato" class="contato">
-
-    <h2>Contato</h2>
-
-    <div class="contact-box">
-
-      <a
-        href="https://wa.me/5561999816528"
-        target="_blank"
-        class="contact-btn"
-      >
-        WhatsApp
-      </a>
-
-      <a
-        href="https://discord.gg/GfwFfhfUGH"
-        target="_blank"
-        class="contact-btn discord"
-      >
-        Discord
-      </a>
-
-    </div>
-
-  </section>
-
-  <footer>
-    © 2026 FlowBots Digital • Transformando ideias em realidade
-  </footer>
-
+<script type="module" src="firebase.js"></script>
+<script type="module" src="protect-products.js"></script>
+<script type="module" src="home-auth.js"></script>
 </body>
 </html>
+<script type="module" src="firebase.js"></script>
+<script type="module" src="protect-products.js"></script>
+<script type="module" src="home-auth.js"></script>
+<script src="hide-header.js"></script>
+
+<div class="logo-area">
+    <img src="images/logo-flowbots.png" alt="FlowBots Digital">
+</div>
