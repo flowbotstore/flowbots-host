@@ -23,12 +23,14 @@ if (registerForm) {
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
       await sendEmailVerification(userCredential.user);
 
-      msg.textContent = "Conta criada! Verifique seu email antes de entrar.";
+      msg.textContent = "Conta criada! Verifique seu email.";
       msg.style.color = "#7bff42";
+
     } catch (error) {
-      msg.textContent = "Erro: " + error.message;
+      msg.textContent = error.message;
       msg.style.color = "#ff5c5c";
     }
   });
@@ -52,6 +54,7 @@ if (loginForm) {
       }
 
       window.location.href = "painel.html";
+
     } catch (error) {
       msg.textContent = "Email ou senha inválidos.";
       msg.style.color = "#ff5c5c";
@@ -67,11 +70,15 @@ if (logoutBtn) {
 }
 
 if (window.location.pathname.includes("painel.html")) {
+
   onAuthStateChanged(auth, (user) => {
+
     if (!user || !user.emailVerified) {
       window.location.href = "login.html";
     } else {
       userEmail.textContent = "Logado como: " + user.email;
     }
+
   });
+
 }

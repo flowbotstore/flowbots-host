@@ -2,13 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJETO",
-  storageBucket: "SEU_PROJETO.appspot.com",
-  messagingSenderId: "SEU_ID",
-  appId: "SEU_APP_ID"
+  apiKey: "AIzaSyC7UUUGEIUO96Lb4XagwROF5s0rybPWGVM",
+  authDomain: "flowbots-host.firebaseapp.com",
+  projectId: "flowbots-host",
+  storageBucket: "flowbots-host.firebasestorage.app",
+  messagingSenderId: "413543932038",
+  appId: "1:413543932038:web:dca7479b18cd965144b107"
 };
 
 const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);

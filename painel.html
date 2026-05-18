@@ -3,47 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel | FlowBots Digital</title>
+  <title>Painel</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <a href="index.html" class="logo-area">
-    <img src="assets/logo.png" alt="FlowBots Digital">
-    <span>FlowBots Digital</span>
-  </a>
-
-  <button class="btn" id="logoutBtn">Sair</button>
-</header>
-
 <section class="dashboard">
+
   <h1>Painel do Cliente</h1>
+
   <p id="userEmail"></p>
 
-  <div class="grid">
-    <div class="card">
-      <span>🧾</span>
-      <h3>Meus pedidos</h3>
-      <p>Nenhum pedido encontrado ainda.</p>
-    </div>
+  <button class="btn" id="logoutBtn">Sair</button>
 
-    <div class="card">
-      <span>💳</span>
-      <h3>Pagamentos</h3>
-      <p>Acompanhe seus pagamentos e planos.</p>
-    </div>
-
-    <div class="card">
-      <span>📞</span>
-      <h3>Suporte</h3>
-      <p>Chame nossa equipe pelo WhatsApp ou Discord.</p>
-      <a class="btn" href="https://wa.me/5561982274697" target="_blank">WhatsApp</a>
-    </div>
-  </div>
 </section>
 
 <script type="module" src="firebase.js"></script>
 <script type="module" src="auth.js"></script>
+
 </body>
 </html>
