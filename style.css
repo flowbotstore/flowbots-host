@@ -386,4 +386,53 @@ footer{
   .hero h1{
     letter-spacing:-1px;
   }
+}.logo-icon{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,#007bff,#00eaff);
+  box-shadow:0 0 20px rgba(0,234,255,0.35);
+}
+
+.comparativo{
+  margin:55px 8%;
+  background:linear-gradient(180deg,rgba(8,31,57,0.82),rgba(3,13,29,0.86));
+  border:1px solid rgba(0,234,255,0.22);
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 0 35px rgba(0,234,255,0.07);
+}
+
+.comparativo h2{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:25px;
+}
+
+.lista{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.lista p{
+  background:rgba(255,255,255,0.04);
+  padding:15px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.08);
+  color:#b8d7e6;
+}
+
+.painel-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.painel-actions a{
+  display:inline-block;
 }

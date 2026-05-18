@@ -12,7 +12,7 @@ protectedLinks.forEach((link) => {
 
     onAuthStateChanged(auth, (user) => {
       if (user && user.emailVerified) {
-        window.location.href = link.href;
+        window.location.href = link.getAttribute("href");
       } else {
         window.location.href = "login.html";
       }
