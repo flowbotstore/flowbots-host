@@ -9,15 +9,22 @@
 <body>
 
 <header>
-  <div class="logo">⚡ FlowBots Host</div>
+  <a href="index.html" class="logo-area">
+    <img src="assets/logo.png" alt="FlowBots Digital">
+    <span>FlowBots Digital</span>
+  </a>
 
   <nav>
-    <a href="#planos">Planos</a>
+    <a href="index.html">Início</a>
+    <a href="#planos">Serviços</a>
     <a href="#vantagens">Vantagens</a>
     <a href="#contato">Contato</a>
   </nav>
 
-  <a class="btn" href="#planos">Ver planos</a>
+  <div class="auth-buttons">
+    <a class="login-btn" href="login.html">Entrar</a>
+    <a class="btn" href="cadastro.html">Registrar</a>
+  </div>
 </header>
 
 <section class="hero">
@@ -49,103 +56,50 @@
 </section>
 
 <section id="planos" class="planos">
-  <h2>Planos de Hospedagem</h2>
+  <h2>Nossas Soluções</h2>
+  <p class="section-desc">Transformando ideias em realidade.</p>
 
   <div class="grid">
 
-    <div class="grid">
+    <a href="automacao-whatsapp.html" class="card service-card">
+      <span>🤖</span>
+      <h3>Automações para WhatsApp</h3>
+      <p>Atendimento automático, respostas rápidas, agendamentos e organização de clientes.</p>
+      <strong>A partir de R$100 setup + R$49/mês</strong>
+      <button>Ver detalhes</button>
+    </a>
 
-  <div class="card plano-card">
-    <span>⛏️</span>
-    <h3>Minecraft Java</h3>
-    <p>Servidor Java com plugins, mods ou survival.</p>
-    <strong>A partir de R$15/mês</strong>
+    <a href="bots.html" class="card service-card">
+      <span>💬</span>
+      <h3>Bots para Servidores</h3>
+      <p>Bots personalizados para Discord com comandos, moderação, boas-vindas e sistemas.</p>
+      <strong>A partir de R$10</strong>
+      <button>Ver detalhes</button>
+    </a>
 
-    <div class="detalhes">
-      <p>✅ 2GB RAM inicial</p>
-      <p>✅ Suporte a plugins</p>
-      <p>✅ SSD NVMe</p>
-      <p>✅ Proteção básica</p>
-      <p>✅ Suporte via Discord</p>
-    </div>
+    <a href="sites.html" class="card service-card">
+      <span>🌐</span>
+      <h3>Sites e Landing Pages</h3>
+      <p>Páginas profissionais para divulgar negócios, serviços, comunidades e projetos.</p>
+      <strong>A partir de R$50</strong>
+      <button>Ver detalhes</button>
+    </a>
 
-    <button class="ver-detalhes">Ver detalhes</button>
-    <a class="btn-comprar" href="#contato">Contratar agora</a>
-  </div>
+    <a href="hospedagem.html" class="card service-card">
+      <span>☁️</span>
+      <h3>Hospedagem</h3>
+      <p>Hospedagem para sites, bots e projetos simples com suporte rápido.</p>
+      <strong>A partir de R$25/mês</strong>
+      <button>Ver detalhes</button>
+    </a>
 
-  <div class="card plano-card">
-    <span>📱</span>
-    <h3>Minecraft Bedrock</h3>
-    <p>Servidor Bedrock para amigos ou comunidade.</p>
-    <strong>A partir de R$12/mês</strong>
-
-    <div class="detalhes">
-      <p>✅ Compatível com celular</p>
-      <p>✅ Ideal para Bedrock/Pocket</p>
-      <p>✅ SSD NVMe</p>
-      <p>✅ Configuração simples</p>
-      <p>✅ Suporte via Discord</p>
-    </div>
-
-    <button class="ver-detalhes">Ver detalhes</button>
-    <a class="btn-comprar" href="#contato">Contratar agora</a>
-  </div>
-
-  <div class="card plano-card">
-    <span>🤖</span>
-    <h3>Bots Discord</h3>
-    <p>Hospedagem para bots online 24/7.</p>
-    <strong>A partir de R$10/mês</strong>
-
-    <div class="detalhes">
-      <p>✅ Bot online 24/7</p>
-      <p>✅ Node.js ou Python</p>
-      <p>✅ Reinício automático</p>
-      <p>✅ Ideal para lojas</p>
-      <p>✅ Suporte básico</p>
-    </div>
-
-    <button class="ver-detalhes">Ver detalhes</button>
-    <a class="btn-comprar" href="#contato">Contratar agora</a>
-  </div>
-
-  <div class="card plano-card">
-    <span>🖥️</span>
-    <h3>VPS</h3>
-    <p>VPS para projetos, bots, testes e sistemas.</p>
-    <strong>A partir de R$35/mês</strong>
-
-    <div class="detalhes">
-      <p>✅ Acesso remoto</p>
-      <p>✅ Linux ou Windows</p>
-      <p>✅ SSD rápido</p>
-      <p>✅ Projetos personalizados</p>
-      <p>✅ Escalável</p>
-    </div>
-
-    <button class="ver-detalhes">Ver detalhes</button>
-    <a class="btn-comprar" href="#contato">Contratar agora</a>
-  </div>
-
-  <div class="card plano-card">
-    <span>🌐</span>
-    <h3>Sites</h3>
-    <p>Hospedagem para sites e landing pages.</p>
-    <strong>A partir de R$8/mês</strong>
-
-    <div class="detalhes">
-      <p>✅ Site online</p>
-      <p>✅ Landing pages</p>
-      <p>✅ Certificado SSL</p>
-      <p>✅ Ideal para negócios</p>
-      <p>✅ Suporte via Discord</p>
-    </div>
-
-    <button class="ver-detalhes">Ver detalhes</button>
-    <a class="btn-comprar" href="#contato">Contratar agora</a>
-  </div>
-
-</div>
+    <a href="minecraft.html" class="card service-card">
+      <span>⛏️</span>
+      <h3>Servidores Minecraft</h3>
+      <p>Criação de servidores Minecraft para comunidades, amigos, lojas e projetos.</p>
+      <strong>A partir de R$80 setup</strong>
+      <button>Ver detalhes</button>
+    </a>
 
   </div>
 </section>
@@ -172,6 +126,5 @@
   <p>© 2026 FlowBots Host. Todos os direitos reservados.</p>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>

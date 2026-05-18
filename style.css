@@ -333,4 +333,174 @@ footer{
   .vantagens{
     grid-template-columns:1fr;
   }
+}.service-card{
+  color:white;
+  text-decoration:none;
+  display:block;
+}
+
+.section-desc{
+  text-align:center;
+  color:#b8d7e6;
+  margin-top:-20px;
+  margin-bottom:35px;
+  font-size:18px;
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:#4dfcff;
+  font-size:22px;
+  font-weight:800;
+}
+
+.logo-area img{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  object-fit:cover;
+}
+
+.auth-buttons{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.login-btn{
+  color:#dff8ff;
+  text-decoration:none;
+  font-weight:800;
+  padding:12px 18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.04);
+}
+
+.service-hero{
+  padding:100px 8% 50px;
+  text-align:center;
+}
+
+.service-hero h1{
+  font-size:56px;
+  max-width:900px;
+  margin:20px auto;
+}
+
+.service-hero p{
+  color:#b8d7e6;
+  font-size:20px;
+  max-width:700px;
+  margin:auto;
+}
+
+.service-page{
+  margin:40px 8%;
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:30px;
+}
+
+.service-info,
+.checkout-card,
+.auth-box,
+.dashboard{
+  background:linear-gradient(180deg,rgba(8,31,57,0.82),rgba(3,13,29,0.86));
+  border:1px solid rgba(0,234,255,0.22);
+  border-radius:24px;
+  padding:30px;
+  box-shadow:0 0 35px rgba(0,234,255,0.07);
+}
+
+.checkout-card strong{
+  display:block;
+  color:#7bff42;
+  font-size:30px;
+  margin:20px 0;
+}
+
+.checkout-card a{
+  display:block;
+  text-align:center;
+  margin-top:12px;
+}
+
+.auth-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+}
+
+.auth-box{
+  width:100%;
+  max-width:430px;
+  text-align:center;
+}
+
+.auth-box h1{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.auth-box p{
+  color:#b8d7e6;
+  margin-bottom:18px;
+}
+
+.auth-box input{
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  border-radius:14px;
+  border:1px solid rgba(0,234,255,0.25);
+  background:rgba(255,255,255,0.05);
+  color:white;
+  outline:none;
+}
+
+.auth-box input:focus{
+  border-color:#4dfcff;
+}
+
+.auth-box a{
+  color:#4dfcff;
+}
+
+.auth-box small{
+  display:block;
+  margin-top:15px;
+}
+
+.dashboard{
+  margin:60px 8%;
+}
+
+.dashboard h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.dashboard > p{
+  color:#b8d7e6;
+  margin-bottom:30px;
+}
+
+@media(max-width:850px){
+  .service-page{
+    grid-template-columns:1fr;
+  }
+
+  .service-hero h1{
+    font-size:38px;
+  }
+
+  .auth-buttons{
+    flex-direction:column;
+  }
 }
