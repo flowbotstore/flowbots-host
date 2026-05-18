@@ -4,7 +4,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Inter', Arial, sans-serif;
+  font-family:'Inter',Arial,sans-serif;
 }
 
 html{
@@ -42,11 +42,21 @@ header{
   z-index:10;
 }
 
-.logo{
-  font-size:24px;
-  font-weight:800;
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
   color:#4dfcff;
-  text-shadow:0 0 18px rgba(77,252,255,0.45);
+  font-size:22px;
+  font-weight:800;
+}
+
+.logo-area img{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  object-fit:cover;
 }
 
 nav{
@@ -59,13 +69,16 @@ nav a{
   text-decoration:none;
   font-weight:600;
   font-size:15px;
-  opacity:0.88;
-  transition:0.25s;
 }
 
 nav a:hover{
   color:#4dfcff;
-  opacity:1;
+}
+
+.auth-buttons{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .btn,
@@ -88,19 +101,23 @@ nav a:hover{
   box-shadow:0 0 35px rgba(0,234,255,0.42);
 }
 
+.login-btn,
 .btn-outline{
-  color:#4dfcff;
-  border:1px solid rgba(0,234,255,0.7);
-  padding:13px 22px;
-  border-radius:14px;
+  color:#dff8ff;
   text-decoration:none;
   font-weight:800;
+  padding:12px 18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.04);
   transition:0.25s;
 }
 
+.login-btn:hover,
 .btn-outline:hover{
+  color:#4dfcff;
+  border-color:rgba(0,234,255,0.45);
   background:rgba(0,234,255,0.08);
-  transform:translateY(-3px);
 }
 
 .hero{
@@ -111,22 +128,10 @@ nav a:hover{
   justify-content:center;
   align-items:center;
   text-align:center;
-  position:relative;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  width:520px;
-  height:520px;
-  background:rgba(0,234,255,0.08);
-  filter:blur(80px);
-  border-radius:50%;
-  z-index:-1;
-}
-
-.hero span,
-.badge{
+.badge,
+.hero span{
   color:#7bff42;
   border:1px solid rgba(123,255,66,0.45);
   background:rgba(123,255,66,0.07);
@@ -134,11 +139,10 @@ nav a:hover{
   border-radius:999px;
   margin-bottom:22px;
   font-weight:700;
-  box-shadow:0 0 22px rgba(123,255,66,0.12);
 }
 
 .hero h1{
-  font-size:clamp(42px, 6vw, 72px);
+  font-size:clamp(42px,6vw,72px);
   line-height:1.05;
   max-width:1000px;
   letter-spacing:-2px;
@@ -167,8 +171,9 @@ nav a:hover{
 
 .vantagens div,
 .card,
-.comparativo,
-.contato{
+.contato,
+.auth-box,
+.dashboard{
   background:linear-gradient(180deg,rgba(8,31,57,0.82),rgba(3,13,29,0.86));
   border:1px solid rgba(0,234,255,0.22);
   border-radius:24px;
@@ -177,41 +182,30 @@ nav a:hover{
   backdrop-filter:blur(10px);
 }
 
-.vantagens div{
-  transition:0.25s;
-}
-
-.vantagens div:hover{
-  transform:translateY(-5px);
-  border-color:rgba(77,252,255,0.55);
-}
-
-.vantagens h3{
-  font-size:20px;
-  margin-bottom:5px;
-}
-
 .vantagens p,
 .card p,
-.comparativo p,
 .contato p{
   color:#b8d7e6;
   line-height:1.5;
 }
 
 .planos,
-.comparativo,
 .contato{
   margin:55px 8%;
 }
 
 .planos h2,
-.comparativo h2,
 .contato h2{
   text-align:center;
   font-size:42px;
+  margin-bottom:12px;
+}
+
+.section-desc{
+  text-align:center;
+  color:#b8d7e6;
   margin-bottom:35px;
-  letter-spacing:-1px;
+  font-size:18px;
 }
 
 .grid{
@@ -220,24 +214,17 @@ nav a:hover{
   gap:26px;
 }
 
+.service-card{
+  color:white;
+  text-decoration:none;
+  display:block;
+}
+
 .card{
   text-align:center;
   transition:0.3s;
   position:relative;
   overflow:hidden;
-}
-
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(135deg,rgba(0,234,255,0.12),transparent 45%,rgba(123,255,66,0.08));
-  opacity:0;
-  transition:0.3s;
-}
-
-.card:hover::before{
-  opacity:1;
 }
 
 .card:hover{
@@ -261,26 +248,11 @@ nav a:hover{
   display:block;
   color:#7bff42;
   margin:20px 0;
-  font-size:20px;
+  font-size:19px;
 }
 
 .card button{
   width:100%;
-  position:relative;
-  z-index:1;
-}
-
-.lista{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:16px;
-}
-
-.lista p{
-  background:rgba(255,255,255,0.04);
-  padding:15px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.06);
 }
 
 .contato{
@@ -292,141 +264,17 @@ nav a:hover{
   font-size:18px;
 }
 
+.contato a{
+  display:inline-block;
+  margin:7px;
+}
+
 footer{
   text-align:center;
   padding:32px;
   color:#b8d7e6;
   border-top:1px solid rgba(0,234,255,0.18);
   background:rgba(2,8,18,0.6);
-}
-
-@media(max-width:850px){
-  header{
-    flex-direction:column;
-    gap:15px;
-  }
-
-  nav{
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .hero{
-    padding-top:80px;
-  }
-
-  .hero h1{
-    letter-spacing:-1px;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-    width:100%;
-    max-width:320px;
-  }
-
-  .btn,
-  .btn-outline{
-    text-align:center;
-  }
-
-  .vantagens{
-    grid-template-columns:1fr;
-  }
-}.service-card{
-  color:white;
-  text-decoration:none;
-  display:block;
-}
-
-.section-desc{
-  text-align:center;
-  color:#b8d7e6;
-  margin-top:-20px;
-  margin-bottom:35px;
-  font-size:18px;
-}
-
-.logo-area{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  color:#4dfcff;
-  font-size:22px;
-  font-weight:800;
-}
-
-.logo-area img{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  object-fit:cover;
-}
-
-.auth-buttons{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.login-btn{
-  color:#dff8ff;
-  text-decoration:none;
-  font-weight:800;
-  padding:12px 18px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(255,255,255,0.04);
-}
-
-.service-hero{
-  padding:100px 8% 50px;
-  text-align:center;
-}
-
-.service-hero h1{
-  font-size:56px;
-  max-width:900px;
-  margin:20px auto;
-}
-
-.service-hero p{
-  color:#b8d7e6;
-  font-size:20px;
-  max-width:700px;
-  margin:auto;
-}
-
-.service-page{
-  margin:40px 8%;
-  display:grid;
-  grid-template-columns:1.5fr 1fr;
-  gap:30px;
-}
-
-.service-info,
-.checkout-card,
-.auth-box,
-.dashboard{
-  background:linear-gradient(180deg,rgba(8,31,57,0.82),rgba(3,13,29,0.86));
-  border:1px solid rgba(0,234,255,0.22);
-  border-radius:24px;
-  padding:30px;
-  box-shadow:0 0 35px rgba(0,234,255,0.07);
-}
-
-.checkout-card strong{
-  display:block;
-  color:#7bff42;
-  font-size:30px;
-  margin:20px 0;
-}
-
-.checkout-card a{
-  display:block;
-  text-align:center;
-  margin-top:12px;
 }
 
 .auth-page{
@@ -439,8 +287,17 @@ footer{
 
 .auth-box{
   width:100%;
-  max-width:430px;
+  max-width:440px;
   text-align:center;
+}
+
+.auth-logo{
+  color:#4dfcff;
+  text-decoration:none;
+  font-weight:800;
+  display:block;
+  margin-bottom:22px;
+  font-size:22px;
 }
 
 .auth-box h1{
@@ -468,83 +325,65 @@ footer{
   border-color:#4dfcff;
 }
 
-.auth-box a{
+.auth-link{
+  margin-top:18px;
+  color:#b8d7e6;
+  text-align:center;
+}
+
+.auth-link a{
   color:#4dfcff;
+  font-weight:800;
+  text-decoration:none;
 }
 
 .auth-box small{
   display:block;
   margin-top:15px;
+  line-height:1.5;
 }
 
 .dashboard{
   margin:60px 8%;
+  max-width:520px;
 }
 
 .dashboard h1{
   font-size:42px;
-  margin-bottom:10px;
+  margin-bottom:20px;
 }
 
-.dashboard > p{
+.dashboard p{
   color:#b8d7e6;
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
 @media(max-width:850px){
-  .service-page{
-    grid-template-columns:1fr;
+  header{
+    flex-direction:column;
+    gap:15px;
   }
 
-  .service-hero h1{
-    font-size:38px;
+  nav{
+    flex-wrap:wrap;
+    justify-content:center;
   }
 
   .auth-buttons{
     flex-direction:column;
   }
-}.auth-page{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:30px;
-}
 
-.auth-box,
-.dashboard{
-  width:100%;
-  max-width:430px;
-  background:linear-gradient(180deg,rgba(8,31,57,0.82),rgba(3,13,29,0.86));
-  border:1px solid rgba(0,234,255,0.22);
-  border-radius:24px;
-  padding:30px;
-  box-shadow:0 0 35px rgba(0,234,255,0.07);
-}
+  .hero-buttons{
+    flex-direction:column;
+    width:100%;
+    max-width:320px;
+  }
 
-.auth-box h1,
-.dashboard h1{
-  margin-bottom:20px;
-  text-align:center;
-}
+  .vantagens{
+    grid-template-columns:1fr;
+  }
 
-.auth-box input{
-  width:100%;
-  padding:15px;
-  margin:10px 0;
-  border-radius:14px;
-  border:1px solid rgba(0,234,255,0.25);
-  background:rgba(255,255,255,0.05);
-  color:white;
-  outline:none;
-}
-
-.auth-box input:focus{
-  border-color:#4dfcff;
-}
-
-.auth-box small{
-  display:block;
-  margin-top:15px;
-  text-align:center;
+  .hero h1{
+    letter-spacing:-1px;
+  }
 }

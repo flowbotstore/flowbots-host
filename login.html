@@ -3,31 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrar</title>
+  <title>Entrar | FlowBots Digital</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section class="auth-page">
-
   <form class="auth-box" id="loginForm">
+    <a href="index.html" class="auth-logo">⚡ FlowBots Digital</a>
 
     <h1>Entrar</h1>
+    <p>Acesse sua conta para ver os serviços e continuar.</p>
 
     <input type="email" id="loginEmail" placeholder="Seu email" required>
-
     <input type="password" id="loginPassword" placeholder="Sua senha" required>
 
     <button type="submit" class="btn">Entrar</button>
 
+    <p class="auth-link">
+      Não tem conta? <a href="cadastro.html">Criar conta</a>
+    </p>
+
     <small id="loginMsg"></small>
-
   </form>
-
 </section>
 
 <script type="module" src="firebase.js"></script>
 <script type="module" src="auth.js"></script>
-
 </body>
 </html>

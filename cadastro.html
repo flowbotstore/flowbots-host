@@ -3,31 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criar conta</title>
+  <title>Criar conta | FlowBots Digital</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section class="auth-page">
-
   <form class="auth-box" id="registerForm">
+    <a href="index.html" class="auth-logo">⚡ FlowBots Digital</a>
 
     <h1>Criar conta</h1>
+    <p>Crie sua conta para acessar os serviços da FlowBots.</p>
 
     <input type="email" id="registerEmail" placeholder="Seu email" required>
-
-    <input type="password" id="registerPassword" placeholder="Sua senha" required>
+    <input type="password" id="registerPassword" placeholder="Sua senha, mínimo 6 caracteres" required>
 
     <button type="submit" class="btn">Registrar</button>
 
+    <p class="auth-link">
+      Já tem conta? <a href="login.html">Entrar</a>
+    </p>
+
     <small id="registerMsg"></small>
-
   </form>
-
 </section>
 
 <script type="module" src="firebase.js"></script>
 <script type="module" src="auth.js"></script>
-
 </body>
 </html>

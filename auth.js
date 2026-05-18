@@ -17,20 +17,27 @@ if (registerForm) {
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById("registerEmail").value;
+    const email = document.getElementById("registerEmail").value.trim();
     const password = document.getElementById("registerPassword").value;
     const msg = document.getElementById("registerMsg");
+
+    msg.textContent = "Criando sua conta...";
+    msg.style.color = "#b8d7e6";
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
       await sendEmailVerification(userCredential.user);
 
-      msg.textContent = "Conta criada! Verifique seu email.";
+      msg.textContent =
+        "Conta criada! Enviamos um email de confirmação. Verifique sua caixa de entrada ou spam antes de entrar.";
       msg.style.color = "#7bff42";
 
+      registerForm.reset();
+
     } catch (error) {
-      msg.textContent = error.message;
+      msg.textContent =
+        "Não foi possível criar a conta. Verifique o email, use uma senha com pelo menos 6 caracteres ou tente outro email.";
       msg.style.color = "#ff5c5c";
     }
   });
@@ -40,15 +47,19 @@ if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = document.getElementById("loginEmail").value;
+    const email = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value;
     const msg = document.getElementById("loginMsg");
+
+    msg.textContent = "Entrando...";
+    msg.style.color = "#b8d7e6";
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
       if (!userCredential.user.emailVerified) {
-        msg.textContent = "Verifique seu email antes de entrar.";
+        msg.textContent =
+          "Você ainda precisa confirmar seu email. Verifique sua caixa de entrada ou spam.";
         msg.style.color = "#ffcc00";
         return;
       }
@@ -56,7 +67,8 @@ if (loginForm) {
       window.location.href = "painel.html";
 
     } catch (error) {
-      msg.textContent = "Email ou senha inválidos.";
+      msg.textContent =
+        "Email ou senha inválidos. Se ainda não tem conta, clique em criar conta.";
       msg.style.color = "#ff5c5c";
     }
   });
@@ -70,15 +82,11 @@ if (logoutBtn) {
 }
 
 if (window.location.pathname.includes("painel.html")) {
-
   onAuthStateChanged(auth, (user) => {
-
     if (!user || !user.emailVerified) {
       window.location.href = "login.html";
-    } else {
+    } else if (userEmail) {
       userEmail.textContent = "Logado como: " + user.email;
     }
-
   });
-
 }
