@@ -3,50 +3,87 @@ import { auth } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  sendEmailVerification,
   signOut,
   onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+// =======================
+// CADASTRO
+// =======================
 
 const registerForm = document.getElementById("registerForm");
-const loginForm = document.getElementById("loginForm");
-const logoutBtn = document.getElementById("logoutBtn");
-const userEmail = document.getElementById("userEmail");
 
-if (registerForm) {
+if(registerForm){
 
   registerForm.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const email = document.getElementById("registerEmail").value.trim();
-    const password = document.getElementById("registerPassword").value;
+    const email =
+      document.getElementById("registerEmail").value;
 
-    const msg = document.getElementById("registerMsg");
+    const password =
+      document.getElementById("registerPassword").value;
 
-    msg.textContent = "Criando sua conta...";
-    msg.style.color = "#b8d7e6";
+    const msg =
+      document.getElementById("registerMessage");
 
-    try {
+    // CAPTCHA
 
-      const userCredential = await createUserWithEmailAndPassword(
+    const captchaResponse = grecaptcha.getResponse();
+
+    if(!captchaResponse){
+
+      msg.textContent =
+        "Confirme que você não é um robô.";
+
+      msg.style.color = "#ffcc00";
+
+      return;
+    }
+
+    try{
+
+      await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
 
-      await sendEmailVerification(userCredential.user);
-
-      window.location.href = "confirmacao.html";
-
-      registerForm.reset();
-
-    } catch (error) {
-
       msg.textContent =
-        "Não foi possível criar a conta. Verifique o email ou use uma senha com pelo menos 6 caracteres.";
+        "Conta criada com sucesso.";
 
-      msg.style.color = "#ff5c5c";
+      msg.style.color = "#4dff88";
+
+      grecaptcha.reset();
+
+      setTimeout(() => {
+
+        window.location.href = "painel.html";
+
+      }, 1200);
+
+    } catch(error){
+
+      let errorText = "Erro ao criar conta.";
+
+      if(error.code === "auth/email-already-in-use"){
+        errorText = "Esse email já está em uso.";
+      }
+
+      if(error.code === "auth/weak-password"){
+        errorText = "A senha precisa ter pelo menos 6 caracteres.";
+      }
+
+      if(error.code === "auth/invalid-email"){
+        errorText = "Email inválido.";
+      }
+
+      msg.textContent = errorText;
+      msg.style.color = "#ff6666";
+
+      grecaptcha.reset();
 
     }
 
@@ -54,46 +91,51 @@ if (registerForm) {
 
 }
 
-if (loginForm) {
+
+// =======================
+// LOGIN
+// =======================
+
+const loginForm = document.getElementById("loginForm");
+
+if(loginForm){
 
   loginForm.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value;
+    const email =
+      document.getElementById("loginEmail").value;
 
-    const msg = document.getElementById("loginMsg");
+    const password =
+      document.getElementById("loginPassword").value;
 
-    msg.textContent = "Entrando...";
-    msg.style.color = "#b8d7e6";
+    const msg =
+      document.getElementById("loginMessage");
 
-    try {
+    try{
 
-      const userCredential = await signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
         email,
         password
       );
 
-      if (!userCredential.user.emailVerified) {
+      msg.textContent = "Login realizado.";
+      msg.style.color = "#4dff88";
 
-        msg.textContent =
-          "Confirme seu email antes de entrar. Verifique sua caixa de entrada ou spam.";
+      setTimeout(() => {
 
-        msg.style.color = "#ffcc00";
+        window.location.href = "painel.html";
 
-        return;
-      }
+      }, 1000);
 
-      window.location.href = "painel.html";
-
-    } catch (error) {
+    } catch(error){
 
       msg.textContent =
-        "Email ou senha inválidos. Caso não tenha conta, clique em criar conta.";
+        "Email ou senha incorretos.";
 
-      msg.style.color = "#ff5c5c";
+      msg.style.color = "#ff6666";
 
     }
 
@@ -101,36 +143,45 @@ if (loginForm) {
 
 }
 
-if (logoutBtn) {
+
+// =======================
+// PAINEL
+// =======================
+
+const userEmail =
+  document.getElementById("userEmail");
+
+const logoutBtn =
+  document.getElementById("logoutBtn");
+
+if(userEmail){
+
+  onAuthStateChanged(auth, (user) => {
+
+    if(user){
+
+      userEmail.innerHTML = `
+        Logado como:
+        <strong>${user.email}</strong>
+      `;
+
+    } else {
+
+      window.location.href = "login.html";
+
+    }
+
+  });
+
+}
+
+if(logoutBtn){
 
   logoutBtn.addEventListener("click", async () => {
 
     await signOut(auth);
 
     window.location.href = "login.html";
-
-  });
-
-}
-
-if (window.location.pathname.includes("painel.html")) {
-
-  onAuthStateChanged(auth, (user) => {
-
-    if (!user || !user.emailVerified) {
-
-      window.location.href = "login.html";
-
-    } else {
-
-      if (userEmail) {
-
-        userEmail.textContent =
-          "Logado como: " + user.email;
-
-      }
-
-    }
 
   });
 
